@@ -1,0 +1,92 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+#body {
+  background: black;
+  height: inherit;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #EBE6E5;
+}
+
+#header {
+  background: #B4BAD4;
+  height: 80px;
+}
+
+#header .header-logo {
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+
+#header .header-log {
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 20%;
+}
+
+#header .header-logo img {
+  height: 90%;
+  top: 0;
+  left: 0;
+}
+
+
+.form{
+  height: 400px;
+  width: 100%;
+}
+
+
+
+#content .main .form {
+  padding: 20px;
+}
+
+
+#content .main .form .input{
+  text-align: center;
+  margin-top: 100px;
+}
+
+#content .main .form .input input {
+  width: 90%;
+  height: 40px;
+}
+
+#content .main .form .submit {
+
+  margin-top: 20px;
+  text-align: center;
+}
+
+#content .main .list {
+  padding: 20px;
+}
+
+#content .main h1 {
+  font-weight: bold;
+  text-align: center;
+}
+
+#content .main .list .elem {
+  background:  #B4BAD4;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+#content .main .list .elem .list-elem-name {
+  font-weight: bold;
+  font-size: 120%;
+}
+
+#content .main .list .elem li {
+  list-style-type: none;
+  padding: 5px;
+}

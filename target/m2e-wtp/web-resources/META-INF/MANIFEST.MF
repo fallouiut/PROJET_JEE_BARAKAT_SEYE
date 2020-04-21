@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: fallou
+Build-Jdk: 11.0.6
+Implementation-Title: ens-SpringBoot
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: ens-SpringBoot
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/ens-SpringBoot
+Created-By: Maven Integration for Eclipse
+
