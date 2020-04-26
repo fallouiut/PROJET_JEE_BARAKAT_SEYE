@@ -60,4 +60,10 @@ public class DAOPersonImpl implements DAOPerson{
 		nb += em.createQuery("DELETE FROM Person").executeUpdate();
 		System.out.println(nb + " entities deleted");	     
 	}
+
+	@Override
+	public Person findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -8,4 +8,5 @@ import entity.Person;
 @Service
 public interface DAOPerson extends DAO<Person> {
 
+	public abstract Person findByEmail(String email);
 }

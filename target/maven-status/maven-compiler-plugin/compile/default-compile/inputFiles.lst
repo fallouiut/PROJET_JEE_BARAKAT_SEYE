@@ -1,3 +1,13 @@
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/entity/Group.java
 /home/fallou/Téléchargements/ens-SpringBoot/src/main/java/controller/MainController.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/model/services/DAO.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/model/impl/DAOGroupImpl.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/entity/Person.java
 /home/fallou/Téléchargements/ens-SpringBoot/src/main/java/mybootapp/Starter.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/model/services/DAOPerson.java
 /home/fallou/Téléchargements/ens-SpringBoot/src/main/java/controller/LogController.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/manager/IDirectoryManager.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/model/services/DAOGroup.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/model/impl/DAOPersonImpl.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/entity/User.java
+/home/fallou/Téléchargements/ens-SpringBoot/src/main/java/manager/Manager.java

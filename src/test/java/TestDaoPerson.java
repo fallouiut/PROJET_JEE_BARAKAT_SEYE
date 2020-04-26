@@ -9,12 +9,13 @@ import java.sql.Date;
 import model.services.DAOPerson;
 import entity.Person;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
- 
-@ExtendWith(SpringExtension.class)
+@RunWith(SpringRunner.class)
 public class TestDaoPerson {
 
 	@Autowired
@@ -25,7 +26,7 @@ public class TestDaoPerson {
 		System.out.println("testAutowired");
 		System.out.println(dao.toString());
 	}    
-	
+
 	@Test
 	public void testSavePerson() {
 		Person p = new Person();
@@ -55,7 +56,6 @@ public class TestDaoPerson {
 		p.setPassWord("mot_de_passe_update");
 		
 		dao.modifier(p);
-		
 	}
 	
 	@Test
