@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.PostUpdate;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -15,6 +18,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+@NamedQuery (
+        name = "findAll",
+        query = "SELECT p FROM Person p WHERE p.Email = :email"
+)
+
+@NamedQuery (
+        name = "findByEmail",
+        query = "SELECT p FROM Person p"
+)
 
 @Entity(name = "Person")
 @Table(name = "TPerson")
@@ -53,6 +65,10 @@ public class Person implements Serializable {
    @Column(name = "password", length = 30, nullable = false)
    private String PassWord;
    
+   @ManyToOne(optional = true)
+   @JoinColumn(name = "team")
+   private Group team; 
+   
  
    @Transient
    public static long updateCounter = 0;
@@ -81,14 +97,14 @@ public class Person implements Serializable {
       System.err.println("PostUpdate of " + this);
       //updateCounter++;
    }
-/*
+
    @Override
    public String toString() {
       return "Person(id=" + getId() + "," + "firstName" + getFirstName() + "," + "lastName" + getLastName() + "," + 
     		  "birthDay" + getBirthDay() +  "," + "Email" + getMail() + "," + "WebSite" + getWebSite() + "," 
             + "password" + getPassWord() + ")";
    }
-*/
+
    public long getId() {
       return id;
    }
@@ -144,5 +160,13 @@ public class Person implements Serializable {
    public void setWebSite(String WebSite) {
 	   this.WebSite = WebSite;
    }
+   
+   public Group getTeam() {
+		      return team;
+	}
 	
+	public void setTeam(Group team) {
+		   this.team = team;
+	}
+
 }

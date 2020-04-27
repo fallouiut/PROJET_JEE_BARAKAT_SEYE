@@ -38,7 +38,8 @@ public class Manager implements IDirectoryManager {
 
 	@Override
 	public Group findGroup(User user, long groupId) {
-		// TODO Auto-generated method stub
+
+		Group g = this.daoGroup.find(groupId);
 		return this.daoGroup.find(groupId);
 	}
 

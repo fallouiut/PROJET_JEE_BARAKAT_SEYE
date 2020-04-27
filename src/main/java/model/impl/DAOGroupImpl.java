@@ -2,22 +2,25 @@ package model.impl;
 
 import java.util.Collection;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import entity.Group;
 import model.services.DAOGroup;
 
+//@Repository
+@Transactional
 @Service
 public class DAOGroupImpl implements DAOGroup {
 	
 
     @PersistenceContext(type = PersistenceContextType.TRANSACTION)
-    EntityManager em;
+    EntityManager emanager;
 
 
     @Override
@@ -25,27 +28,33 @@ public class DAOGroupImpl implements DAOGroup {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+    
+    @Transactional
 	@Override
 	public Group find(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Group g = emanager.find(Group.class, id);
+		//g.getPerson().size();
+		System.out.println("*** groupe n°" +" "+ g.getId() + " "+ g.getGroupName());
+		return g;
 	}
-
+	
+	@Transactional
 	@Override
 	public void save(Group object) {
-		// TODO Auto-generated method stub
-		
+		emanager.persist(object);	
+		System.out.println("*** ajout d'une person au groupe id=" + object.getId() + " de nom: " + object.getGroupName());
 	}
+	
 
+	@Transactional
 	@Override
-	public void modifier(Group object) {
-		// TODO Auto-generated method stub
-		
+	public void modifier(Group g) {		
+		emanager.merge(g);			   
+		System.err.println("update of the group witdh id=" + g.getId() +" "+ g.getGroupName());   
 	}
 	
 	@Override
 	public void clearDatabase() {	   
-		  
+		  //
 	}
 }
