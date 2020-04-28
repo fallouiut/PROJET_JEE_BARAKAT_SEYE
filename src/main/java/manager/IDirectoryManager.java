@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import entity.Group;
 
+@Service
 public interface IDirectoryManager {
     // créer un utilisateur anonyme
     User newUser();

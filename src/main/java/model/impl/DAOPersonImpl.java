@@ -1,6 +1,7 @@
 package model.impl;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -30,16 +31,18 @@ public class DAOPersonImpl implements DAOPerson{
 		try {
 	        TypedQuery<Person> q = em.createNamedQuery("findAll", Person.class);
 			return q.getResultList();
-		} catch(Exception e) {
-			return null;
-		}
+    	} catch (Exception e) {
+    		System.err.println("dao error");
+    		return null;
+    	}
 	}
 
 	@Transactional
 	@Override
 	public Person find(long id) {
 		Person p = em.find(Person.class, id);
-		System.out.println(" person retrouver" +" "+ p.getId());
+		System.out.println(p.toString());
+		//System.out.println(" person retrouver" +" "+ p.getId());
 		return p;
 	}
 
@@ -47,7 +50,7 @@ public class DAOPersonImpl implements DAOPerson{
 	@Override
 	public void save(Person object) {
 		em.persist(object);	
-		 System.err.println("addPerson witdh id=" + object.getId());
+		 //System.err.println("addPerson witdh id=" + object.getId());
 	}
 
 	@Transactional
@@ -72,8 +75,9 @@ public class DAOPersonImpl implements DAOPerson{
 	                .setParameter("email", email);
 	        
 			return q.getSingleResult();
-		} catch(Exception e) {
-			return null;
-		}
+		} catch (Exception e) {
+    		System.err.println("dao error");
+    		return null;
+    	}
 	}
 }

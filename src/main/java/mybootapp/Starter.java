@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories(basePackageClasses = Starter.class)
 @EntityScan(basePackageClasses = Starter.class)
-@ComponentScan({"controller", "manager"})
+@ComponentScan({"controller", "manager", "entity", "model.services", "model.impl"})
 public class Starter extends SpringBootServletInitializer {
 
 	@Override

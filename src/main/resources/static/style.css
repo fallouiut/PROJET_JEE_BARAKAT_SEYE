@@ -55,12 +55,12 @@ body {
   margin-top: 100px;
 }
 
-#content .main .form .input input {
+.form_input {
   width: 90%;
   height: 40px;
 }
 
-#content .main .form .submit {
+.form_submit {
 
   margin-top: 20px;
   text-align: center;

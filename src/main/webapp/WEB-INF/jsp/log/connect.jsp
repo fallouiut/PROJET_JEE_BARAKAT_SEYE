@@ -3,18 +3,22 @@
 
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 <%@ include file="/WEB-INF/jsp/layout/head.jsp" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div id="content">
   <div class="main">
-    <form class="form">
+        
+    <form:form method="post" modelAttribute="user">
+    
       <div class="input">
-        <input type="text" placeholder="Email" /> <br/><br/>
-          <input type="password" placeholder="Mot de passe" />
+        <form:input class="form_input" path="email"  type="text" placeholder="Email" />
+        <form:input class="form_input" path="password" type="password" placeholder="Mot de passe" />
       </div>
+      
       <div class="submit">
-          <button type="submit" class="btn btn-primary">Connexion</button>
+          <input class="form_submit" type="submit" class="btn btn-primary"></input>
       </div>
-    </form>
+      
+    </form:form>
   </div>
 </div>
 

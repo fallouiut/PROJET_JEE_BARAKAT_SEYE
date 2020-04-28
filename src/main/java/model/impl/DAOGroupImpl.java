@@ -32,10 +32,15 @@ public class DAOGroupImpl implements DAOGroup {
     @Transactional
 	@Override
 	public Group find(long id) {
+    	try {
 		Group g = emanager.find(Group.class, id);
 		//g.getPerson().size();
 		System.out.println("*** groupe n°" +" "+ g.getId() + " "+ g.getGroupName());
 		return g;
+    	} catch (Exception e) {
+    		System.err.println("dao error");
+    		return null;
+    	}
 	}
 	
 	@Transactional
