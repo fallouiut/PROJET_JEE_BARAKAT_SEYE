@@ -45,9 +45,14 @@ public class TestController {
     
     @RequestMapping(value = "/fallou", method = RequestMethod.GET)
     public String testFallou() {
-    	List<Person> p = (List<Person>) manager.findAllPersons(null, 1);
+    	//List<Person> p = (List<Person>) manager.findAllPersons(null, 1);
+    	//System.err.println("Taille " + p);
 
-    	System.err.println("Taille " + p);
+    	//Person per = manager.findPerson(null, 2);
+    	//System.err.println("personne " + per);
+    	
+    	Person per2 = daoFallou.findByEmail("fallou.seye@outlook.fr");
+    	System.err.println("personne " + per2);
     	
     	return "index";
     }

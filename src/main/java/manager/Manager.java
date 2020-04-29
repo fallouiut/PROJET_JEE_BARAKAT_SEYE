@@ -45,7 +45,7 @@ public class Manager implements IDirectoryManager {
 	@Override
 	public Collection<Person> findAllPersons(User user, long groupId) {
 		// TODO Auto-generated method stub
-		return null;
+		return daoPerson.findAll();
 	}
 
 	@Override

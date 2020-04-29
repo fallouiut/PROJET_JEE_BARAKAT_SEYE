@@ -20,7 +20,7 @@ import javax.persistence.Transient;
 
 @NamedQuery (
         name = "findByEmail",
-        query = "SELECT p FROM Person p WHERE p.Email = 'fallou.seye@etu.univ-amu.fr' "
+        query = "SELECT p FROM Person p WHERE p.Email = :email "
 )
 
 @NamedQuery (

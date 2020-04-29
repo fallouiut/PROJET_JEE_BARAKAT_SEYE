@@ -28,7 +28,8 @@ public class DAOPersonImpl implements DAOPerson{
 	@Override
 	public Collection<Person> findAll() {
 		try {
-	        TypedQuery<Person> q = em.createNamedQuery("findAll", Person.class);
+			String query = "SELECT p FROM Person p";
+	        TypedQuery<Person> q = em.createQuery(query, Person.class);
 			return q.getResultList();
     	} catch (Exception e) {
     		System.err.println("dao error");
@@ -66,7 +67,7 @@ public class DAOPersonImpl implements DAOPerson{
 	@Override
 	public Person findByEmail(String email) {
 		try {
-	        TypedQuery<Person> q = em.createQuery("SELECT p FROM Person p", Person.class);//.setParameter("email", email);
+	        TypedQuery<Person> q = em.createNamedQuery("findByEmail", Person.class).setParameter("email", email);
 	        System.err.println("Taille de l'ensemble retournée " + q.getResultList().size());
 			return q.getSingleResult();
 		} catch (Exception e) {
