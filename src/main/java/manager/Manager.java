@@ -15,7 +15,6 @@ import model.services.DAOGroup;
 import model.services.DAOPerson;
 
 @Service
-@Transactional
 public class Manager implements IDirectoryManager {
 	
 	@Autowired
@@ -53,7 +52,7 @@ public class Manager implements IDirectoryManager {
 	public boolean login(String email, String password) {
 		Person p = daoPerson.findByEmail(email);
 		
-		if(p.getMail().equals(email) && p.getPassWord().equals(password)) {
+		if(p != null && p.getMail().equals(email) && p.getPassWord().equals(password)) {
 			return true;
 		}
 		return false;
@@ -62,6 +61,11 @@ public class Manager implements IDirectoryManager {
 	@Override
 	public void logout(User user) {
 		user = null;	
+	}
+	
+	public void tstring() {
+		System.err.println("Dao: ");
+		System.err.println(daoPerson.toString());
 	}
 
 	@Override

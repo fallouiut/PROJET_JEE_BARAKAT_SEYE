@@ -37,18 +37,14 @@ body {
   left: 0;
 }
 
-
 .form{
   height: 400px;
   width: 100%;
 }
 
-
-
 #content .main .form {
   padding: 20px;
 }
-
 
 #content .main .form .input{
   text-align: center;
@@ -56,12 +52,11 @@ body {
 }
 
 .form_input {
-  width: 90%;
+  width: 50%;
   height: 40px;
 }
 
-.form_submit {
-
+#content .main .form .submit {
   margin-top: 20px;
   text-align: center;
 }

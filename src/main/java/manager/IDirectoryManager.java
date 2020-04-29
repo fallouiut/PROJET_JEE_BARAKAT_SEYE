@@ -28,6 +28,8 @@ public interface IDirectoryManager {
 
     // oublier l'utilisateur
     void logout(User user);
+    
+    public void tstring();
 
     // enregistrer une personne
     void savePerson(User user, Person p);

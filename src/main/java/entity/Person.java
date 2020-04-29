@@ -19,12 +19,12 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @NamedQuery (
-        name = "findAll",
-        query = "SELECT p FROM Person p WHERE p.Email = :email"
+        name = "findByEmail",
+        query = "SELECT p FROM Person p WHERE p.Email = 'fallou.seye@etu.univ-amu.fr' "
 )
 
 @NamedQuery (
-        name = "findByEmail",
+        name = "findAll",
         query = "SELECT p FROM Person p"
 )
 

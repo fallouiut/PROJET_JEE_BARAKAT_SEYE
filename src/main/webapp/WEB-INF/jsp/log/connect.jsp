@@ -7,11 +7,18 @@
 <div id="content">
   <div class="main">
         
-    <form:form method="post" modelAttribute="user">
+    <form:form class="form" method="post" modelAttribute="user">
+    
+    	<c:if test="${loginError != null}">
+    		<div class="alert alert-danger">${loginError}</div>
+    	</c:if>
     
       <div class="input">
         <form:input class="form_input" path="email"  type="text" placeholder="Email" />
+        <form:errors path="email" cssClass="alert alert-danger" element="div" />
+        
         <form:input class="form_input" path="password" type="password" placeholder="Mot de passe" />
+        <form:errors path="password" cssClass="alert alert-danger" element="div" />        
       </div>
       
       <div class="submit">

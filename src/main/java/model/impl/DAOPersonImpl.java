@@ -18,7 +18,7 @@ import entity.Person;
 import entity.User;
 import model.services.DAOPerson;
 
-@Transactional
+@Repository
 @Service
 public class DAOPersonImpl implements DAOPerson{
 
@@ -27,7 +27,6 @@ public class DAOPersonImpl implements DAOPerson{
 
 	@Override
 	public Collection<Person> findAll() {
-
 		try {
 	        TypedQuery<Person> q = em.createNamedQuery("findAll", Person.class);
 			return q.getResultList();
@@ -37,7 +36,6 @@ public class DAOPersonImpl implements DAOPerson{
     	}
 	}
 
-	@Transactional
 	@Override
 	public Person find(long id) {
 		Person p = em.find(Person.class, id);
@@ -45,22 +43,19 @@ public class DAOPersonImpl implements DAOPerson{
 		//System.out.println(" person retrouver" +" "+ p.getId());
 		return p;
 	}
-
-	@Transactional
+	
 	@Override
 	public void save(Person object) {
 		em.persist(object);	
 		 //System.err.println("addPerson witdh id=" + object.getId());
 	}
 
-	@Transactional
 	@Override
 	public void modifier(Person p) {		
 		em.merge(p);			   
 		//System.err.println("update of the person witdh id=" + p.getId() +" "+ p.getFirstName());   
 	}
 	
-	@Transactional
 	@Override
 	public void clearDatabase() {	   
 		int nb = 0;
@@ -71,12 +66,14 @@ public class DAOPersonImpl implements DAOPerson{
 	@Override
 	public Person findByEmail(String email) {
 		try {
-	        TypedQuery<Person> q = em.createNamedQuery("findByEmail", Person.class)
-	                .setParameter("email", email);
-	        
+	        TypedQuery<Person> q = em.createQuery("SELECT p FROM Person p", Person.class);//.setParameter("email", email);
+	        System.err.println("Taille de l'ensemble retournée " + q.getResultList().size());
 			return q.getSingleResult();
 		} catch (Exception e) {
     		System.err.println("dao error");
+    		System.err.println(e.getMessage());
+    		e.printStackTrace();
+    		
     		return null;
     	}
 	}

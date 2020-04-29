@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@ComponentScan(basePackageClasses = SpringBusinessConfig.class)
 @ComponentScan({"entity", "model.services", "model.impl", "manager"})
 @EnableTransactionManagement
-//@PropertySource("classpath:config.properties")
+@PropertySource("classpath:config.properties")
 public class SpringBusinessConfig {
 	
     /*

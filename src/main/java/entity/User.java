@@ -18,12 +18,12 @@ public class User implements Serializable {
 
     
 	@NotNull(message = "Le champs email est vide")
-	@NotBlank
+	@NotBlank(message = "Le champs email est vide")
 	@Email(message = "Veuillez saisir un email valide")
 	private String email;
 	
 	@NotNull(message = "Le champ mot de passe est vide")
-	@NotBlank
+	@NotBlank(message = "Le champ mot de passe est vide")
 	private String password;
     
     private Person relatedPerson;

@@ -22,11 +22,9 @@ public class Group implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	
 	@Id()
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
 	
 	@Basic(optional = false)
 	@Column(name = "group_name", length = 200, nullable = false)

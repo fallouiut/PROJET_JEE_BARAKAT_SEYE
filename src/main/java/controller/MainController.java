@@ -16,7 +16,7 @@ public class MainController {
 	
     protected final Log logger = LogFactory.getLog(getClass());
 
-    @RequestMapping(value = "/ok", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHomePage() {
     	logger.info("\u001B[34m Demande du controlleur main");
     	System.out.println("Demande du controleur main \u001B[0m");

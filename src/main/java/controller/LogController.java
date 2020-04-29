@@ -2,13 +2,16 @@ package controller;
 
 
 import java.net.http.HttpRequest;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import entity.Person;
 import entity.User;
 import manager.IDirectoryManager;
 
@@ -34,16 +39,18 @@ public class LogController {
      * Traiter le formulaire de connexion
      */
     @RequestMapping(value="/connect", method = RequestMethod.POST)
-    public String treatConnectFormPage(@Valid @ModelAttribute User user, BindingResult result) {   
-		System.err.println("Salut"); 	
+    public String treatConnectFormPage(HttpServletRequest request, ModelMap model, @Valid @ModelAttribute User user, BindingResult result) {   
     	if(result.hasErrors()) {
-    		System.err.println("Error");
     		return "log/connect";
     	} else {
-    		System.out.println(user.toString());
-    		System.out.println("Tout est ok");
+    		if(manager.login(user.getEmail(), user.getPassword())) {
+    			System.err.println("Tout est ok");
+    			return "log/connect";
+			} else {
+				model.addAttribute("loginError", "Erreur dans l'authentification. Veuillez réessayer");
+		    	return "log/connect";
+    		}
     	}
-    	return "log/connect";
     }
 
     /*
@@ -51,19 +58,13 @@ public class LogController {
      */
     @RequestMapping(value="/connect", method = RequestMethod.GET)
     public String getConnectFormPage() {
-    	System.err.println(manager.toString());
-    	System.err.println("Demande du controleur main");
     	return "log/connect";
     }
-    
+
     @ModelAttribute
     public User getUser(
-    		@RequestParam("email") String email, 
-    		@RequestParam("password") String password) {
-
-    	System.err.println("Email: " + email);
-    	System.err.println("Password: " + password);
-    	
+    		@RequestParam(value = "email", required = false) String email, 
+    		@RequestParam(value = "password", required = false) String password) {
     	User user = new User();
 		user.setEmail(email);
 		user.setPassword(password);

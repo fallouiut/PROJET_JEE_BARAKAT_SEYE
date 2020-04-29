@@ -7,13 +7,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackageClasses = Starter.class)
-@EntityScan(basePackageClasses = Starter.class)
+@EntityScan({"entity"})
 @ComponentScan({"controller", "manager", "entity", "model.services", "model.impl"})
 public class Starter extends SpringBootServletInitializer {
-
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(Starter.class);
