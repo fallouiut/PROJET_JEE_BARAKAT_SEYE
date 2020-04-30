@@ -52,12 +52,18 @@ public class Manager implements IDirectoryManager {
 		// TODO Auto-generated method stub
 		return daoPerson.findAll();
 	}
+	
+	@Override
+	public Collection<Group> findAllGroups() {
+		// TODO Auto-generated method stub
+		return daoGroup.findAll();
+	}
 
 	@Override
 	public boolean login(String email, String password) {
 		Person p = daoPerson.findByEmail(email);
 		
-		if(p != null && p.getMail().equals(email) && p.getPassWord().equals(password)) {
+		if(p != null && p.getEmail().equals(email) && p.getPassWord().equals(password)) {
 			this.foundLogin = p;
 			System.err.println("return true,");
 			return true;

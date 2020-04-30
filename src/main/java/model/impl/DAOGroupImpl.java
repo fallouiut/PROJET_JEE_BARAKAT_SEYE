@@ -5,12 +5,14 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import entity.Group;
+import entity.Person;
 import model.services.DAOGroup;
 
 //@Repository
@@ -25,8 +27,14 @@ public class DAOGroupImpl implements DAOGroup {
 
     @Override
 	public Collection<Group> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			String query = "SELECT g FROM Group g";
+	        TypedQuery<Group> q = emanager.createQuery(query, Group.class);
+			return q.getResultList();
+    	} catch (Exception e) {
+    		System.err.println("dao error");
+    		return null;
+    	}
 	}
     
     @Transactional

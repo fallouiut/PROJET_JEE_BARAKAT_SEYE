@@ -20,7 +20,7 @@ import javax.persistence.Transient;
 
 @NamedQuery (
         name = "findByEmail",
-        query = "SELECT p FROM Person p WHERE p.Email = :email "
+        query = "SELECT p FROM Person p WHERE p.email = :email "
 )
 
 @NamedQuery (
@@ -49,17 +49,17 @@ public class Person implements Serializable {
    @Basic(optional = false)
    @Column(name = "email", length = 65,
       nullable = false, unique = true, insertable = true, updatable = false)
-   private String Email;
+   private String email;
    
    @Basic(optional = false)
    @Column(name = "website", length = 200,
       nullable = false, unique = true)
-   private String WebSite;
+   private String website;
 
    @Basic(optional = false)
    @Temporal(TemporalType.DATE)
    @Column(name = "birthday")
-   private Date birthDay;
+   private Date birthday;
    
    @Basic(optional = false)
    @Column(name = "password", length = 30, nullable = false)
@@ -81,9 +81,9 @@ public class Person implements Serializable {
       super();
       this.firstName = firstName;
       this.lastName = lastName;
-      this.birthDay = birthDay;
-      this.Email = Email;
-      this.WebSite = WebSite;
+      this.birthday = birthDay;
+      this.email = Email;
+      this.website = WebSite;
       this.PassWord = PassWord;
    }
 
@@ -101,7 +101,7 @@ public class Person implements Serializable {
    @Override
    public String toString() {
       return "Person(id=" + getId() + "," + "firstName" + getFirstName() + "," + "lastName" + getLastName() + "," + 
-    		  "birthDay" + getBirthDay() +  "," + "Email" + getMail() + "," + "WebSite" + getWebSite() + "," 
+    		  "birthDay" + getBirthday() +  "," + "Email" + getEmail() + "," + "WebSite" + getWebsite() + "," 
             + "password" + getPassWord() + ")";
    }
 
@@ -129,20 +129,12 @@ public class Person implements Serializable {
 	      this.lastName = lastName;
    }
    
-   public Date getBirthDay() {
-	      return birthDay;
+   public Date getBirthday() {
+	      return birthday;
    }
 
-   public void setBirthDay(Date birthDay) {
-	      this.birthDay = birthDay;
-   }
-
-   public String getMail() {
-	      return Email;
-   }
-
-   public void setMail(String Email) {
-	      this.Email = Email;
+   public void setBirthday(Date birthDay) {
+	      this.birthday = birthDay;
    }
    
    public String getPassWord() {
@@ -151,14 +143,6 @@ public class Person implements Serializable {
 
    public void setPassWord(String PassWord) {
 	      this.PassWord = PassWord;
-   }
-
-   public String getWebSite() {
-	      return WebSite;
-   }
-
-   public void setWebSite(String WebSite) {
-	   this.WebSite = WebSite;
    }
    
    public Group getTeam() {
@@ -169,4 +153,19 @@ public class Person implements Serializable {
 		   this.team = team;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
 }

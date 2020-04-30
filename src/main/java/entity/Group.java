@@ -28,11 +28,11 @@ public class Group implements Serializable {
 	
 	@Basic(optional = false)
 	@Column(name = "group_name", length = 200, nullable = false)
-	private String GroupName;
+	private String groupName;
 	
 	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE },	     
 	fetch = FetchType.LAZY, mappedBy = "team")
-	private Set<Person> person;
+	private Set<Person> persons;
 
 	public Group () {
 		
@@ -40,7 +40,7 @@ public class Group implements Serializable {
 	
 	public Group(String GroupName) {
 	      super();
-	      this.GroupName = GroupName;
+	      this.groupName = GroupName;
 	}
 	
 	public long getId() {
@@ -52,11 +52,11 @@ public class Group implements Serializable {
 	}
 
 	public String getGroupName() {
-		return GroupName;
+		return groupName;
 	}
 
 	public void setGroupName(String GroupName) {
-		this.GroupName = GroupName;
+		this.groupName = GroupName;
 	}
 	
 	@Override
@@ -64,19 +64,19 @@ public class Group implements Serializable {
 		return "Group(id=" + getId() + "," + "GroupName" + getGroupName() + ")";
 	}
 	
-	public Set<Person> getPerson() {
-		return person;
+	public Set<Person> getPersons() {
+		return persons;
 	}
 
 	public void setPerson(Set<Person> person) {
-		this.person = person;
+		this.persons = person;
 	}
 
 	public void addPerson(Person p) {
-		if (person == null) {
-			person = new HashSet<>();
+		if (persons == null) {
+			persons = new HashSet<>();
 		}
-		person.add(p);
+		persons.add(p);
 		p.setTeam(this);
 	} 
 	

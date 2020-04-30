@@ -34,6 +34,6 @@ public interface IDirectoryManager {
 
     // enregistrer une personne
     void savePerson(User user, Person p);
-
+    Collection<Group>findAllGroups();
 	Person getLoggedPerson();
 }

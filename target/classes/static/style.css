@@ -85,3 +85,18 @@ body {
   list-style-type: none;
   padding: 5px;
 }
+
+.error {
+  background: rgb(255,105,97);
+  opacity: 0.9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.error h2 {
+  text-align: center;
+}
+
+.error h3 {
+  text-align: center;
+}
