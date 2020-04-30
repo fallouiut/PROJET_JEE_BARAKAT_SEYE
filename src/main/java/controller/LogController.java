@@ -43,9 +43,18 @@ public class LogController {
     	if(result.hasErrors()) {
     		return "log/connect";
     	} else {
+    		/**
+    		 * Login trouvé
+    		 * on mets user en session 
+    		 * on récupère sa "Person"
+    		 */
     		if(manager.login(user.getEmail(), user.getPassword())) {
     			System.err.println("Tout est ok");
-    			return "log/connect";
+    			
+    			user.setRelatedPerson(manager.getLoggedPerson());
+    			request.getSession().setAttribute("user", user);
+    			
+    			return "index";
 			} else {
 				model.addAttribute("loginError", "Erreur dans l'authentification. Veuillez réessayer");
 		    	return "log/connect";
@@ -70,5 +79,18 @@ public class LogController {
 		user.setPassword(password);
     	
     	return user;
+    }
+    
+    @RequestMapping(value = "/deconnect", method = RequestMethod.GET)
+    public String deconnect(HttpServletRequest request) {
+    	
+    	if(request.getSession().getAttribute("user") != null) {
+    		manager.logout( (User)request.getSession().getAttribute("user")); 
+    		request.getSession().removeAttribute("user");
+    		System.err.println("deconnecté");
+    	}
+  
+		return "index";
+    	
     }
 }

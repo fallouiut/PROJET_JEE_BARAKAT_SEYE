@@ -3,6 +3,6 @@
         <img src="logo_projet.png" />
       </div>
       <div class="header-log">
-        <button type="button" class="btn btn-primary">Déconnexion</button>
+        <a href="/log/deconnect" class="btn btn-primary">Deconnexion</a>
       </div>
     </div>

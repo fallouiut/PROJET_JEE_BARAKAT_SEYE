@@ -48,8 +48,13 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [email=" + email + ", password=" + password + "]";
 	}
-	
-	
-	
+
+	public Person getRelatedPerson() {
+		return relatedPerson;
+	}
+
+	public void setRelatedPerson(Person relatedPerson) {
+		this.relatedPerson = relatedPerson;
+	}
 
 }

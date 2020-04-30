@@ -17,11 +17,10 @@
 
 <div id="body">
 
-<c:choose>
-	<c:when test="${sessionScope.user != null}">
-		<%@ include file="/WEB-INF/jsp/layout/session-header.jsp" %>
-	</c:when>
-	<c:when test="${sessionScope.user == null}">
-		<%@ include file="/WEB-INF/jsp/layout/simple-header.jsp" %>
-	</c:when>
-</c:choose>
+<% if(request.getSession().getAttribute("user") != null) { %>
+	<% System.out.println("session enabled"); %>
+	<%@ include file="/WEB-INF/jsp/layout/session-header.jsp" %>
+<% } else { %>
+	<% System.out.println("session disabled"); %>
+	<%@ include file="/WEB-INF/jsp/layout/simple-header.jsp" %>
+<% } %>

@@ -8,6 +8,10 @@
       <div class="input">
         <input type="text" placeholder="Cherchez une personne dans l'annuaire " />
       </div>
+      
+      <% System.out.println("okok"); %>
+      <% System.out.println(request.getSession().getAttribute("user")); %>
+		
       <div class="submit">
           <button type="submit" class="btn btn-primary">Recherche</button>
       </div>

@@ -1,6 +1,8 @@
 package controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -17,9 +19,10 @@ public class MainController {
     protected final Log logger = LogFactory.getLog(getClass());
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHomePage() {
+    public String getHomePage(HttpServletRequest request) {
+
     	logger.info("\u001B[34m Demande du controlleur main");
     	System.out.println("Demande du controleur main \u001B[0m");
-    	return "index";
+    	return "index"; 
     }
 }

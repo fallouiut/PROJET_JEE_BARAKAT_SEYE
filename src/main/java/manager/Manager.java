@@ -23,6 +23,11 @@ public class Manager implements IDirectoryManager {
 	@Autowired 
 	private DAOGroup daoGroup;
 	
+	/**
+	 * Pour eviter d'aller chercher une deuxieme fois si login == true
+	 */
+	private Person foundLogin;
+	
 	@Override
 	public User newUser() {
 		User user = new User();
@@ -53,14 +58,23 @@ public class Manager implements IDirectoryManager {
 		Person p = daoPerson.findByEmail(email);
 		
 		if(p != null && p.getMail().equals(email) && p.getPassWord().equals(password)) {
+			this.foundLogin = p;
+			System.err.println("return true,");
 			return true;
 		}
+		System.err.println("return fakse,");
+		foundLogin = null;
 		return false;
+	}
+	
+	public Person getLoggedPerson() {
+		return this.foundLogin;
 	}
 
 	@Override
 	public void logout(User user) {
 		user = null;	
+		foundLogin = null;
 	}
 	
 	public void tstring() {

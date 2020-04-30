@@ -1,6 +1,7 @@
 package manager;
 
 import entity.Person;
+
 import entity.User;
 
 import java.util.Collection;
@@ -33,4 +34,6 @@ public interface IDirectoryManager {
 
     // enregistrer une personne
     void savePerson(User user, Person p);
+
+	Person getLoggedPerson();
 }

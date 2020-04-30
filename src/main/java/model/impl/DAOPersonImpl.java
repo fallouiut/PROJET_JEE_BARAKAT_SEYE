@@ -3,6 +3,7 @@ package model.impl;
 import java.util.ArrayList;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -69,12 +70,13 @@ public class DAOPersonImpl implements DAOPerson{
 		try {
 	        TypedQuery<Person> q = em.createNamedQuery("findByEmail", Person.class).setParameter("email", email);
 	        System.err.println("Taille de l'ensemble retournée " + q.getResultList().size());
-			return q.getSingleResult();
+	        
+	        return q.getSingleResult();
+	        
 		} catch (Exception e) {
-    		System.err.println("dao error");
-    		System.err.println(e.getMessage());
-    		e.printStackTrace();
-    		
+    		System.err.println("dao error findByEmail()");
+    		//System.err.println(e.getMessage());
+    		//e.printStackTrace();
     		return null;
     	}
 	}
