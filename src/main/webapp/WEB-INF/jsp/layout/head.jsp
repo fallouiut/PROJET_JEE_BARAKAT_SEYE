@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
   
 <c:url var="cssUrl" value="/style.css" />
+<c:url var="logoUrl" value="/logo_projet.png" />
 
 <!doctype html>
 <html lang="fr">
