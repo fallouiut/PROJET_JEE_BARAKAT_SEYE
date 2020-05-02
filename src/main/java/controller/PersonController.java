@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,6 +51,24 @@ public class PersonController {
     		// TODO renvoyer vers page erreur
     	}
 		
+    }
+    
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    public String getUserDescription(@PathVariable("userId") int userId,
+    		 HttpServletRequest request,ModelMap model) {
+    	if(request.getSession().getAttribute("user") != null) {
+    		Person found = manager.findPerson(null, userId);	
+    		if(found == null) {
+    			System.err.println("Not found");
+    			return "error/personNotFound";
+    		} else {
+    			model.addAttribute("person", found);
+            	return "persons/description";
+    		}    		
+    	} else {
+    		return "error/loginError";
+    		// TODO renvoyer vers page erreur
+    	}
     }
 
 }

@@ -41,7 +41,7 @@ public class DAOPersonImpl implements DAOPerson{
 	@Override
 	public Person find(long id) {
 		Person p = em.find(Person.class, id);
-		System.out.println(p.toString());
+		//System.out.println(p.toString());
 		//System.out.println(" person retrouver" +" "+ p.getId());
 		return p;
 	}
@@ -69,7 +69,7 @@ public class DAOPersonImpl implements DAOPerson{
 	public Person findByEmail(String email) {
 		try {
 	        TypedQuery<Person> q = em.createNamedQuery("findByEmail", Person.class).setParameter("email", email);
-	        System.err.println("Taille de l'ensemble retournée " + q.getResultList().size());
+	        //System.err.println("Taille de l'ensemble retournée " + q.getResultList().size());
 	        
 	        return q.getSingleResult();
 	        

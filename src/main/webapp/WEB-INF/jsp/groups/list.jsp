@@ -16,7 +16,7 @@
 	            	<div class="list-elem-name">Personnes associées: <c:out value="${group.persons.size()}"></c:out></div>
 	             </c:if>
 	             
-    	         <li><a href="/persons/${person.id}">Voir détail du groupe</a></li>
+    	         <li><a href="/groups/${group.id}">Voir détail du groupe</a></li>
 	             
 				
 	          </ul>

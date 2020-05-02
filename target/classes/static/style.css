@@ -39,7 +39,12 @@ body {
 
 .form{
   height: 400px;
-  width: 100%;
+  width: 70%;
+  background: #588da8;
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 10px;
 }
 
 #content .main .form {
@@ -52,8 +57,9 @@ body {
 }
 
 .form_input {
-  width: 50%;
+  width: 80%;
   height: 40px;
+  border-radius: 5px;
 }
 
 #content .main .form .submit {
@@ -99,4 +105,19 @@ body {
 
 .error h3 {
   text-align: center;
+}
+
+.card {
+  background: #a8d3da;
+  opacity: 0.9;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card div {
+  text-align: left;
 }
