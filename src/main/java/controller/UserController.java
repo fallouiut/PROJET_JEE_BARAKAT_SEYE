@@ -40,10 +40,10 @@ public class UserController {
      */
     @RequestMapping(value="/description", method = RequestMethod.GET)
     public String getDescriptionPage(HttpServletRequest request, ModelMap model) { 
-    	
-    	User user = (User)request.getSession().getAttribute("user");
-    	if(user != null) {
-    		model.addAttribute("person", user.getRelatedPerson());
+    	;
+    	if(request.getSession().getAttribute("user") != null) {
+    		Person person = ((User)request.getSession().getAttribute("user")).getRelatedPerson();
+    		model.addAttribute("person", person);
     		return "persons/edit";
     	} else {
     		return "error/loginError";
@@ -71,14 +71,14 @@ public class UserController {
     			
     			manager.updatePerson(current);
     			
+    			System.err.println(current);
+    			
     			model.addAttribute("person", current);
-    			model.addAttribute("successEdit", "Veuillez vous reconnecter afin de voir les modificiations");
+    			model.addAttribute("successEdit", "Votre description a été modifiée avec succès");
     			// affichage message reconnexion
     			// afficha 
     			return "persons/description";
     		}
-    		
-    		
     	} else {
     		return "error/loginError";
     	}

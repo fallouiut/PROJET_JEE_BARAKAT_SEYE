@@ -49,7 +49,6 @@ public class GroupsController {
         	return "groups/list";
     	} else {
     		return "error/loginError";
-    		// TODO renvoyer vers page erreur
     	}
     }
     

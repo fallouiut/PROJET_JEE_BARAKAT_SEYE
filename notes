@@ -3,7 +3,7 @@
 https://stackoverflow.com/questions/8138458/javax-persistence-noresultexception-no-entity-found-for-query
 
 
-- Error rejected value Spring validator:
+- Error rejected value Spring validator: mmettre l'objet modelAttribut et Binding result cote a cote
 
     Validation results for the command/form object data binding; this argument must be declared immediately after the command/form object in the controller method signature.
 
@@ -13,4 +13,10 @@ https://stackoverflow.com/questions/47751827/spring-boot-exception-after-adding-
 
 
 - No entity manager with actual transaction 
-javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'merge' call
+javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'merge' call: rajouter @transactional à la méthode concerncée
+
+
+JPQL LIKE NOT WORKING
+
+https://stackoverflow.com/questions/21456494/spring-jpa-query-with-like/27966031
+CONCAT('%', :pattern, '%')

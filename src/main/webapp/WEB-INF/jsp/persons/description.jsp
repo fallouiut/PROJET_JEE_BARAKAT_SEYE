@@ -22,7 +22,7 @@
       </div>
       
      </div>
-   ZZ</div>
+   </div>
      
 
 <%@ include file="/WEB-INF/jsp/layout/foot.jsp" %>

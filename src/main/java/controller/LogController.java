@@ -40,25 +40,24 @@ public class LogController {
      */
     @RequestMapping(value="/connect", method = RequestMethod.POST)
     public String treatConnectFormPage(HttpServletRequest request, ModelMap model, @Valid @ModelAttribute User user, BindingResult result) {   
-    	if(result.hasErrors()) {
-    		return "index";
+    	if(request.getSession().getAttribute("user") == null) {
+	    	if(result.hasErrors()) {
+	    		return "index";
+	    	} else {
+	    		if(manager.login(user.getEmail(), user.getPassword())) {
+	    			System.err.println("Tout est ok");
+	    			
+	    			user.setRelatedPerson(manager.getLoggedPerson());
+	    			request.getSession().setAttribute("user", user);
+	    			
+	    			return "redirect:search/use";
+				} else {
+					model.addAttribute("loginError", "Erreur dans l'authentification. Veuillez réessayer");
+			    	return "index";
+	    		}
+	    	}
     	} else {
-    		/**
-    		 * Login trouvé
-    		 * on mets user en session 
-    		 * on récupère sa "Person"
-    		 */
-    		if(manager.login(user.getEmail(), user.getPassword())) {
-    			System.err.println("Tout est ok");
-    			
-    			user.setRelatedPerson(manager.getLoggedPerson());
-    			request.getSession().setAttribute("user", user);
-    			
-    			return "redirect:search/use";
-			} else {
-				model.addAttribute("loginError", "Erreur dans l'authentification. Veuillez réessayer");
-		    	return "index";
-    		}
+    		return "redirect:search/use";
     	}
     }
 
@@ -66,8 +65,12 @@ public class LogController {
      * Renvoyer la page de connexion
      */
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String getConnectFormPage() {
-    	return "index";
+    public String getConnectFormPage(HttpServletRequest request) {
+    	if(request.getSession().getAttribute("user") == null) {
+    		return "index";
+    	} else {
+    		return "redirect:search/use";
+    	}
     }
 
     @ModelAttribute
@@ -85,7 +88,7 @@ public class LogController {
     public String deconnect(HttpServletRequest request) {
     	
     	if(request.getSession().getAttribute("user") != null) {
-    		manager.logout( (User)request.getSession().getAttribute("user")); 
+    		request.getSession().invalidate();
     		request.getSession().removeAttribute("user");
     		System.err.println("deconnecté");
     	}

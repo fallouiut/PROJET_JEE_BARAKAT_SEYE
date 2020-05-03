@@ -32,9 +32,9 @@ import javax.validation.constraints.NotNull;
 
 @NamedQuery (
 		name = "findLike",
-		query = "SELECT p FROM Person p WHERE p.firstName LIKE :pattern"
-				+ " OR p.lastName LIKE :pattern"
-				+ " OR p.website LIKE :pattern"
+		query = "SELECT p FROM Person p WHERE p.firstName LIKE CONCAT('%', :pattern, '%')"
+				+ " OR p.lastName LIKE CONCAT('%', :pattern, '%')"
+				+ " OR p.website LIKE CONCAT('%', :pattern, '%')"
 )
 
 @Entity(name = "Person")
@@ -117,9 +117,9 @@ public class Person implements Serializable {
 
    @Override
    public String toString() {
-      return "Person(id=" + getId() + "," + "firstName" + getFirstName() + "," + "lastName" + getLastName() + "," + 
-    		  "birthDay" + getBirthday() +  "," + "Email" + getEmail() + "," + "WebSite" + getWebsite() + "," 
-            + "password" + getPassWord() + ")";
+      return "Person(id=" + getId() + "," + "firstName=" + getFirstName() + "," + "lastName=" + getLastName() + "," + 
+    		  "birthDay=" + getBirthday() +  "," + "Email=" + getEmail() + "," + "WebSite=" + getWebsite() + "," 
+            + "password=" + getPassWord() + ")";
    }
 
    public long getId() {

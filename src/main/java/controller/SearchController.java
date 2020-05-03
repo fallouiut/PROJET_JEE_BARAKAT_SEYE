@@ -35,21 +35,29 @@ public class SearchController {
 
     @RequestMapping(value = "/use", method = RequestMethod.GET)
     public String getSearchPage(HttpServletRequest request) {
-    	System.err.println("ok");
-    	return "search/main"; 
+    	if(request.getSession().getAttribute("user") != null) {
+	    	System.err.println("ok");
+	    	return "search/main"; 
+    	} else {
+    		return "error/loginError";
+    	}
     }
    
     @RequestMapping(value = "/use", method = RequestMethod.POST) 
-    public String userReseach(@Valid @ModelAttribute SearchQuery searchQuery, ModelMap model, BindingResult result) {
-    	if(result.hasErrors() || searchQuery.getQuery().length() <= 0) {
-    		model.addAttribute("searchError", "Votre requête est mauvaise, veuillez recommencer");
-    		return "search/main";
+    public String userReseach(HttpServletRequest request, @Valid @ModelAttribute SearchQuery searchQuery, ModelMap model, BindingResult result) {
+    	if(request.getSession().getAttribute("user") != null) {
+    		if(result.hasErrors() || searchQuery.getQuery().length() <= 0) {
+	    		model.addAttribute("searchError", "Votre requête est mauvaise, veuillez recommencer");
+	    		return "search/main";
+	    	} else {
+	    		// va faire une requete pour chaque mot  composant la requete
+	    		Collection<Person> persons = manager.findPersonsLike(searchQuery.getQuery());
+	    		model.addAttribute("lastQuery", searchQuery.getQuery());
+	    		model.addAttribute("persons", persons);
+	    		return "search/main";
+	    	}
     	} else {
-    		// va faire une requete pour chaque mot  composant la requete
-    		Collection<Person> persons = manager.findPersonsLike(searchQuery.getQuery());
-    		model.addAttribute("lastQuery", searchQuery.getQuery());
-    		model.addAttribute("persons", persons);
-    		return "search/main";
+    		return "error/loginError";
     	}
     }
     
