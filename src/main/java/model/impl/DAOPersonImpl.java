@@ -53,6 +53,7 @@ public class DAOPersonImpl implements DAOPerson{
 	}
 
 	@Override
+	@Transactional
 	public void modifier(Person p) {		
 		em.merge(p);			   
 		//System.err.println("update of the person witdh id=" + p.getId() +" "+ p.getFirstName());   

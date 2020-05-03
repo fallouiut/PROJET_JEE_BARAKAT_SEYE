@@ -6,8 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div id="content">
   <div class="main">
-        
-    
+     
 	<c:url var="url" value="/connect" />
     <form:form class="form" method="POST" action="${url}" modelAttribute="user">
     

@@ -116,5 +116,10 @@ public class Manager implements IDirectoryManager {
 		
 		return persons;
 	}
+	
+	@Override
+	public void updatePerson(Person p) {
+		daoPerson.modifier(p);
+	}
 
 }

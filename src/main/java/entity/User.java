@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     
 	@NotNull(message = "Le champs email est vide")
 	@NotBlank(message = "Le champs email est vide")

@@ -54,7 +54,7 @@ public class LogController {
     			user.setRelatedPerson(manager.getLoggedPerson());
     			request.getSession().setAttribute("user", user);
     			
-    			return "groups/list";
+    			return "redirect:search/use";
 			} else {
 				model.addAttribute("loginError", "Erreur dans l'authentification. Veuillez réessayer");
 		    	return "index";

@@ -31,6 +31,8 @@ public interface IDirectoryManager {
     void logout(User user);
     
     public void tstring();
+    
+    public void updatePerson(Person p);
 
     // enregistrer une personne
     void savePerson(User user, Person p);

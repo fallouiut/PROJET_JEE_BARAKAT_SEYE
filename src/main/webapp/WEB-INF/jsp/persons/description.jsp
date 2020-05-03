@@ -4,6 +4,10 @@
 
    <div id="content">
       <div class="main">
+          	<c:if test="${successEdit != null}">
+	    		<div class="alert alert-success">${successEdit}</div>
+	    	</c:if>
+    
         <div class="list">
           <div class="card">
             <h2><strong><c:out value="${person.firstName.toUpperCase()}" /> <c:out value="${person.lastName.toUpperCase()}" /></strong></h2>

@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @NamedQuery (
         name = "findByEmail",
@@ -45,19 +47,27 @@ public class Person implements Serializable {
    @GeneratedValue(strategy = GenerationType.AUTO)
    private long id;
 
+   @NotNull(message = "Le champ Prénom est vide")
+   @NotBlank(message = "Le champ Prénom est vide")
    @Basic(optional = false)
    @Column(name = "firstname", length = 25, nullable = false)
    private String firstName;
-   
+
+   @NotNull(message = "Le champ Nom est vide")
+   @NotBlank(message = "Le champ Nom est vide")
    @Basic(optional = false)
    @Column(name = "lastname", length = 25,nullable = false)
    private String lastName;
 
+   @NotNull(message = "Le champ Email est vide")
+   @NotBlank(message = "Le champ Email est vide")
    @Basic(optional = false)
    @Column(name = "email", length = 65,
       nullable = false, unique = true, insertable = true, updatable = false)
    private String email;
-   
+
+   @NotNull(message = "Le champ Webdite est vide")
+   @NotBlank(message = "Le champ Website est vide")
    @Basic(optional = false)
    @Column(name = "website", length = 200,
       nullable = false, unique = true)

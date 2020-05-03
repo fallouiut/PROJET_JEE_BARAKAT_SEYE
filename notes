@@ -1,3 +1,16 @@
-No entity found for query:
+- No entity found for query:
 
 https://stackoverflow.com/questions/8138458/javax-persistence-noresultexception-no-entity-found-for-query
+
+
+- Error rejected value Spring validator:
+
+    Validation results for the command/form object data binding; this argument must be declared immediately after the command/form object in the controller method signature.
+
+So your BindingResult must directly follow your @ModelAttribute annotated method. If that isn't the case then when validation fails an exception will be thrown. 
+
+https://stackoverflow.com/questions/47751827/spring-boot-exception-after-adding-validation-to-model
+
+
+- No entity manager with actual transaction 
+javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'merge' call
