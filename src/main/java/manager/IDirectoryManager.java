@@ -36,4 +36,6 @@ public interface IDirectoryManager {
     void savePerson(User user, Person p);
     Collection<Group>findAllGroups();
 	Person getLoggedPerson();
+
+	Collection<Person> findPersonsLike(String query);
 }

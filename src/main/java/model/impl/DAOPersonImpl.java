@@ -80,4 +80,20 @@ public class DAOPersonImpl implements DAOPerson{
     		return null;
     	}
 	}
+
+	@Override
+	public List<Person> findLike(String pattern) {
+		try {
+	        TypedQuery<Person> q = em.createNamedQuery("findLike", Person.class).setParameter("pattern", pattern);
+	        //System.err.println("Taille de l'ensemble retournée " + q.getResultList().size());
+	        
+	        return q.getResultList();
+	        
+		} catch (Exception e) {
+    		System.err.println("dao error findLike()");
+    		//System.err.println(e.getMessage());
+    		//e.printStackTrace();
+    		return null;
+    	}
+	}
 }

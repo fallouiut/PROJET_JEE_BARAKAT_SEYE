@@ -27,7 +27,7 @@ import entity.User;
 import manager.IDirectoryManager;
 
 @Controller
-@RequestMapping("log/")
+@RequestMapping("/")
 public class LogController {
 	
 	@Autowired
@@ -41,7 +41,7 @@ public class LogController {
     @RequestMapping(value="/connect", method = RequestMethod.POST)
     public String treatConnectFormPage(HttpServletRequest request, ModelMap model, @Valid @ModelAttribute User user, BindingResult result) {   
     	if(result.hasErrors()) {
-    		return "log/connect";
+    		return "index";
     	} else {
     		/**
     		 * Login trouvé
@@ -54,10 +54,10 @@ public class LogController {
     			user.setRelatedPerson(manager.getLoggedPerson());
     			request.getSession().setAttribute("user", user);
     			
-    			return "index";
+    			return "groups/list";
 			} else {
 				model.addAttribute("loginError", "Erreur dans l'authentification. Veuillez réessayer");
-		    	return "log/connect";
+		    	return "index";
     		}
     	}
     }
@@ -65,9 +65,9 @@ public class LogController {
     /*
      * Renvoyer la page de connexion
      */
-    @RequestMapping(value="/connect", method = RequestMethod.GET)
+    @RequestMapping(value="/", method = RequestMethod.GET)
     public String getConnectFormPage() {
-    	return "log/connect";
+    	return "index";
     }
 
     @ModelAttribute

@@ -28,6 +28,13 @@ import javax.persistence.Transient;
         query = "SELECT p FROM Person p"
 )
 
+@NamedQuery (
+		name = "findLike",
+		query = "SELECT p FROM Person p WHERE p.firstName LIKE :pattern"
+				+ " OR p.lastName LIKE :pattern"
+				+ " OR p.website LIKE :pattern"
+)
+
 @Entity(name = "Person")
 @Table(name = "TPerson")
 public class Person implements Serializable {

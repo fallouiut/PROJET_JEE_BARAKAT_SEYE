@@ -18,7 +18,6 @@
 	             
     	         <li><a href="/groups/${group.id}">Voir détail du groupe</a></li>
 	             
-				
 	          </ul>
           	</c:forEach>
 

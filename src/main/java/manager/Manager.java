@@ -1,6 +1,10 @@
 package manager;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.transaction.Transactional;
 
@@ -92,6 +96,25 @@ public class Manager implements IDirectoryManager {
 	public void savePerson(User user, Person p) {
 		// TODO Auto-generated method stub
 		daoPerson.save(p);
+	}
+	
+	@Override
+	public Collection<Person> findPersonsLike(String query) {
+		Set<Person> persons = new HashSet<>();
+		
+		String[] words = query.split(" ");
+		
+		int i = 0;
+		for(String word: words) {
+			++i;
+			List<Person> tournée = daoPerson.findLike(word);
+			System.out.println(">Tournée " + i + ", " + tournée.size() + " personnes");
+			persons.addAll(tournée);
+		}
+		
+		System.err.println("Taille totale" + persons.size());
+		
+		return persons;
 	}
 
 }

@@ -1,21 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/layout/head.jsp" %>
 
+<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ include file="/WEB-INF/jsp/layout/head.jsp" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div id="content">
   <div class="main">
-    <form class="form">
+        
+    
+	<c:url var="url" value="/connect" />
+    <form:form class="form" method="POST" action="${url}" modelAttribute="user">
+    
+    	<c:if test="${loginError != null}">
+    		<div class="alert alert-danger">${loginError}</div>
+    	</c:if>
+    
       <div class="input">
-        <input type="text" placeholder="Cherchez une personne dans l'annuaire " />
+        <form:input class="form_input" path="email"  type="text" placeholder="Email" />
+        <form:errors path="email" cssClass="alert alert-danger" element="div" />
+        
+        <form:input class="form_input" path="password" type="password" placeholder="Mot de passe" />
+        <form:errors path="password" cssClass="alert alert-danger" element="div" />        
       </div>
       
-      <% System.out.println("okok"); %>
-      <% System.out.println(request.getSession().getAttribute("user")); %>
-		
       <div class="submit">
-          <button type="submit" class="btn btn-primary">Recherche</button>
+          <input class="form_submit" type="submit" class="btn btn-primary"></input>
       </div>
-    </form>
+      
+    </form:form>
   </div>
 </div>
 
